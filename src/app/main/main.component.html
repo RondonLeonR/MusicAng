@@ -1,0 +1,64 @@
+<head>
+  <script src="animation.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="player">
+      <div class="player__controls">
+        <h5 class="player__title">Music</h5>
+      </div>
+      <div class="player__album">
+        <img src={{this.song.photo}} class="player__img " />
+      </div>
+
+      <h2 class="player__artist">{{this.song.title}}</h2>
+      <h3 class="player__song">{{this.song.artist}}</h3>
+
+
+      <input type="range" value="{{this.timeProgress}}" max="{{this.durationProgress}}" class="slider"
+        id="range" />
+
+      <div class="audio-duration">
+        <div class="start">{{this.songTime}}</div>
+        <div class="end">{{this.duration}}</div>
+      </div>
+      <br><br><br>
+
+      <div class="player__controls">
+        <div class="button-circle">
+          <div class="gradient"></div>
+          <div class="button" (click)="this.prevSong()">
+            <i class="fas fa-backward fa-2x" style="position: relative; top: 18px;"></i>
+          </div>
+        </div>
+
+
+        <div class="button-circle ">
+          <div class="gradient"></div>
+          <div class="button" (click)="this.playAudio()" *ngIf="!this.playing">
+            <i class="fas fa-play fa-2x" style="position: relative; top: 18px;"></i>
+          </div>
+          <div class="button" *ngIf="this.playing" (click)="this.stopAudio()">
+            <i class="fas fa-pause fa-2x" style="position: relative; top: 18px;"></i>
+          </div>
+        </div>
+
+        <div class="button-circle ">
+          <div class="gradient"></div>
+          <div class="button" (click)="this.nextSong()">
+            <i class="fas fa-forward fa-2x" style="position: relative; top: 18px;"></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="range volumenControl">
+      <!--<h2 class="textVol">Vol</h2>-->
+      <input class="volumen rotate" type="range" min="0" max="100" #volumen
+        (input)="changeVolumen(volumen.value)">
+    </div>
+  </div>
+</body>
